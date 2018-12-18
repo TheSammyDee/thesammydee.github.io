@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Oh Deer</title>
+        <!--    favicon-->
+        <link rel="shortcut icon" href="image/faveicon.png" type="image/x-icon">
+        
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+        <link href="css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/themify-icons.css">
+        <!-- strock-Gap-icon -->
+        <link rel="stylesheet" href="vendors/linear-icon/style.css">
+        <!-- magnific popup-->
+        <link rel="stylesheet" href="vendors/magnific-popup/magnific-popup.css">
+        <!--        owl carousel css-->
+        <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css">
+        <link rel="stylesheet" href="vendors/owl-carousel/animate.css">
+        <!--    css-->
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/responsive.css">
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-default header-full navbar-fixed-top" data-spy="affix" data-offset-top="80">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand about-title" href="index.html"><h4>Samantha Derochie</h4></a>
+                    </div>
+                </div>
+            </nav>
+            <div class="canvas-menu">
+                <div class="header-inner">
+                    <a href="#home" class="nav-logo hidden-con"><img src="image/home-1/logo.png" alt=""></a>
+                    <div class="close"><i class="ti-close"></i></div>
+                    <div class="menunav-container">
+                        <ul class="menu" id="nav">
+                            <li class="active"><a href="index.html">Home</a></li>
+                            <li><a href="index.html#about">About</a></li>
+                            <li><a href="index.html#skills">Skills</a></li>
+                            <li><a href="index.html#projects">Projects</a></li>
+                            <li><a href="index.html#work">Work Experience</a></li>
+                            <li><a href="index.html#education">Education</a></li>
+                        </ul>
+                    </div>		
+                </div>
+            </div>
+        </header>
+        
+        
+		<!--============ start exprence-area =============-->
+        <section class="expreence-area sec-pad" id="projects">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Oh Deer</h2>
+                </div>
+                <div class="row">
+					<div class="col-md-5 col-sm-6">
+                        <div class="exprence-items">
+                            <img src="image/bf2.jpg">
+							<br>
+							<br>
+							<img src="image/bf1.jpg">
+						</div>
+					</div>
+					<div class="col-md-7 col-sm-6">
+                        <p>Box Factory is a personal project to create a logic puzzle game in which the player must replicate the pattern of stamps on a box in the fewest number of moves. The game is intended to challenge player's 3D visualization skills because the player must imagine the series of box rotations in their head to determine the complete list of commands before any are executed. The most interesting part of building the game however, was giving the app the ability to solve its own puzzles.</p>
+						<br>
+						<p>Rather than requiring each puzzle to be coded manually, I wanted the game to be able to generate puzzles itself. Creating a system to randomly generate puzzles was not too difficult except that the game also needed a system to find the optimal solution to each puzzle, which was a very fun challenge. The solver went through several iterations and tests to optimize it, as the number of shortest path checks between two stamps increases exponentially as the number of stamps on a box increases and several boxes must be solved when generating a puzzle of a given difficulty level to determine if it can be solved in the required range of moves; higher level puzzles can require millions of path checks.</p>
+						<br>
+						<p>The shortest path from each possible stamp position to all other possible positions is calculated using a simplified Dijkstra's algorithm, and then stored in dictionary of dictionaries. The first iteration of the solver then used Dijkstra's algorithm again, referencing the stored distance values, to shortest route through stamps on a given puzzle to be solved. However, on large puzzles this method was extremely inefficient.</p>
+						<br>
+						<p>I created a unit test that simulates generating a specific puzzle with 13 stamps. Because the puzzle being created must be solved each time a stamp is added to determine if it has reached the desired difficulty level, this 13 stamp puzzle requires the solver to make 7,725,065 path checks. The first solver checked every path and so was unable to complete the test before running out of memory. By reworking the algorithm to check each path completely before starting a new path, storing only the current shortest path, and abandoning any paths that were already longer than the current shortest, the solver was able to complete the test in an average of 27.9 seconds over 7 tests. Further investigation with Unity's profiler revealed that a large amount of time was being taken by converting stamp positions to strings. By identifying different stamp positions as ints instead of strings, the test was completed in an average of 6.5 seconds. I also experimented with storing the results of path combinations in a dictionary to avoid duplicate calculations, but it was less effective as strings had to be created for the lengthy dictionary keys required to identify the combined paths.</p>
+						<br>
+						<p>You can see the code for Box Factory, or download the Unity project to play, from <a href="https://github.com/TheSammyDee/BoxFactory">GitHub</a></p>
+						<br>
+						<br>
+					</div>
+				</div>
+				
+            </div>
+        </section>
+        <!--============ End exprence-area =============-->
+        
+    
+        
+        <!--=============Start footer-area ===========-->
+        <footer class="footer-area2">
+            <div class="footer-top">
+                <div class="container">
+                    <p>You can find more of my code on GitHub, or reach out to me on LinkedIn</p>
+                    <ul class="f-social">
+                        <li><a href="#"><i class="fa fa-github"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="container">
+                    Copyright &copy; 2016 <a href="#">DroitThemes</a>
+                </div>
+            </div>
+        </footer>
+        <!--=============End footer-area ===========-->
+        <!-- js -->
+        <script type="text/javascript" src="js/jquery-2.2.4.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/jquery.stellar.js"></script>
+        <script src="vendors/waypoint/waypoints.min.js"></script>
+        <script src="vendors/countdown/jquery.counterup.min.js"></script>
+        <script type="text/javascript" src="vendors/imagesloaded/imagesloaded.pkgd.min.js"></script>
+        <script type="text/javascript" src="vendors/isotope/isotope-min.js"></script>
+        <script type="text/javascript" src="vendors/magnific-popup/jquery.magnific-popup.min.js"></script>
+        <script type="text/javascript" src="vendors/owl-carousel/owl.carousel.min.js"></script>
+        <script type="text/javascript" src="js/jquery-imagefill.js"></script>
+        <script type="text/javascript" src="js/jquery-nav.js"></script>
+        <script type="text/javascript" src="js/nicescroll.js"></script>
+        <!-- custom js -->
+        <script type="text/javascript" src="js/custom.js"></script>
+    </body>
+</html>
