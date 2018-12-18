@@ -63,30 +63,20 @@
         <section class="expreence-area sec-pad" id="projects">
             <div class="container">
                 <div class="section-title">
-                    <h2>Box Factory</h2>
+                    <h2>VR Mobile Viewer</h2>
                 </div>
                 <div class="row">
-					<div class="col-lg-5 col-md-6">
+					<div class="col-md-6">
                         <div class="exprence-items">
-                            <img src="image/bf2.jpg">
-							<br>
-							<br>
-							<img src="image/bf1.jpg">
+                            <img class="img-responsive" src="image/viewerconnection.gif">
 							<br>
 							<br>
 						</div>
 					</div>
-					<div class="col-lg-7 col-md-6">
-                        <p>Box Factory is a personal project to create a logic puzzle game in which the player must replicate the pattern of stamps on a box in the fewest number of moves. The game is intended to challenge player's 3D visualization skills because the player must imagine the series of box rotations in their head to determine the complete list of commands before any are executed. The most interesting part of building the game however, was giving the app the ability to solve its own puzzles.</p>
+					<div class="col-md-6">
+                        <p>The Mobile Viewer project is a combination of a plug in for SketchUp and a VR mobile app that allows 3D models being built in SketchUp to be sent to multiple mobile devices in real time for viewing in VR. For my part, I designed and built the mobile app in Unity, which listens for changes to a Firebase database and receives changes as JSON. It uses the JSON to update and maintain an internal data model of the SketchUp building's components and hierarchy, then reorganizes the faces based on material to created more efficient meshes for recreating the SketchUp model on mobile. A particular challenge was that the order and speed in which the data was received from Firebase could not be relied upon, so the system had to be able to handle missing information when rebuilding partially received models, and keep track of which components were still being expected.</p>
 						<br>
-						<p>Rather than requiring each puzzle to be coded manually, I wanted the game to be able to generate puzzles itself. Creating a system to randomly generate puzzles was not too difficult except that the game also needed a system to find the optimal solution to each puzzle, which was a very fun challenge. The solver went through several iterations and tests to optimize it, as the number of shortest path checks between two stamps increases exponentially as the number of stamps on a box increases and several boxes must be solved when generating a puzzle of a given difficulty level to determine if it can be solved in the required range of moves; higher level puzzles can require millions of path checks.</p>
-						<br>
-						<p>The shortest path from each possible stamp position to all other possible positions is calculated using a simplified Dijkstra's algorithm, and then stored in dictionary of dictionaries. The first iteration of the solver then used Dijkstra's algorithm again, referencing the stored distance values, to shortest route through stamps on a given puzzle to be solved. However, on large puzzles this method was extremely inefficient.</p>
-						<br>
-						<p>I created a unit test that simulates generating a specific puzzle with 13 stamps. Because the puzzle being created must be solved each time a stamp is added to determine if it has reached the desired difficulty level, this 13 stamp puzzle requires the solver to make 7,725,065 path checks. The first solver checked every path and so was unable to complete the test before running out of memory. By reworking the algorithm to check each path completely before starting a new path, storing only the current shortest path, and abandoning any paths that were already longer than the current shortest, the solver was able to complete the test in an average of 27.9 seconds over 7 tests. Further investigation with Unity's profiler revealed that a large amount of time was being taken by converting stamp positions to strings. By identifying different stamp positions as ints instead of strings, the test was completed in an average of 6.5 seconds. I also experimented with storing the results of path combinations in a dictionary to avoid duplicate calculations, but it was less effective as strings had to be created for the lengthy dictionary keys required to identify the combined paths.</p>
-						<br>
-						<p>You can see the code for Box Factory, or download the Unity project to play, from <a href="https://github.com/TheSammyDee/BoxFactory">GitHub</a></p>
-						<br>
+						<p>During the Mobile Viewer project I learned about graphics considerations for mobile devices, authentication, the Unity profiler, and gain experience planning the architecture of a small app.</p>
 						<br>
 					</div>
 				</div>
